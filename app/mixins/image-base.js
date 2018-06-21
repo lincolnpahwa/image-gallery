@@ -5,6 +5,6 @@ export default Mixin.create({
   imageName: computed.alias('image.value'),
 
   imageSrc: computed('imageName', function() {
-    return `/assets/images/${this.get('imageName')}.jpg`;
+    return `/images/${this.get('imageName')}.jpg`;
   }),
 });
