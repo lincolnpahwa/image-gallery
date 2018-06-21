@@ -1,0 +1,26 @@
+{{#paper-dialog class="flex-77" fullscreen=true onClose=(action "closeDialog" "cancel") clickOutsideToClose=true}}
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <h2>{{image.value}}</h2>
+    <span class="flex"></span>
+    {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+{{#paper-dialog-content class="layout-row"}}
+    {{detailed-image image=image}}
+
+{{/paper-dialog-content}}
+
+{{#paper-dialog-actions class="layout-row"}}
+  {{#paper-button 
+  	onClick=(action "gotoImage" "previous")
+  	disabled=(eq image.previous null)
+  }}Prev{{/paper-button}}
+  <span class="flex"></span>
+  {{#paper-button 
+  	onClick=(action "gotoImage" "next")
+  	disabled=(eq image.next null)
+  }}Next{{/paper-button}}
+{{/paper-dialog-actions}}
+{{/paper-dialog}}

@@ -1,0 +1,21 @@
+{{#paper-content class="md-whiteframe-z1 grid-list"}}
+
+  {{#paper-grid-list
+    cols="3 xs-2 md-3 gt-md-4"
+    rowHeight="4:3 xs-1:1 1:1"
+    gutter="12px gt-sm-8px" as |grid|}}
+
+    {{#each model.images as |image|}}
+		{{#grid.tile rowspan="1" class="blue" as |tile|}}
+	      {{grid-image image=image imageDetail="imageDetailHandler"}}
+	      {{#tile.footer}}
+	        <h3>{{image.value}}</h3>
+	      {{/tile.footer}}
+	    {{/grid.tile}}
+	{{/each}}
+
+  {{/paper-grid-list}}
+
+{{/paper-content}}
+
+{{outlet}}
