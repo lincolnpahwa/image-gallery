@@ -6,11 +6,13 @@
     gutter="12px gt-sm-8px" as |grid|}}
 
     {{#each model.images as |image index|}}
-		{{#grid.tile rowspan="1" class="blue" as |tile|}}
-	      {{grid-image image=image index=index imageDetail="imageDetailHandler"}}
-	      {{#tile.footer}}
-	        <h3>{{image.value}}</h3>
-	      {{/tile.footer}}
+		{{#grid.tile rowspan="1" class="grid-tile" as |tile|}}
+	      <div class="tile-container" {{action "imageDetailHandler" image index}}>
+	      	{{grid-image image=image index=index imageDetail="imageDetailHandler"}}
+	      	{{#tile.footer}}
+	      	  <h3>{{image-name image.value}}</h3>
+	      	{{/tile.footer}}
+	      </div>
 	    {{/grid.tile}}
 	{{/each}}
 
