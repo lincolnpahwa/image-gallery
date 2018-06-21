@@ -56,7 +56,7 @@ export default Route.extend({
 
       this.keyUpHandlerInstance = this.onKeyUpHandler.bind(this);
 
-      //document.addEventListener('keyup', this.keyUpHandlerInstance, true);
+      document.addEventListener('keyup', this.keyUpHandlerInstance, true);
     },
 
     willTransition() {

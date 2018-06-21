@@ -17,7 +17,11 @@
 	    
 	    {{#swiper-container keyboard=true mousewheel=true options=swiperOptions onChange=(action 'onSwipeChange')}}
 	        {{#each imageList as |image index|}}
-	        	{{#swiper-slide}}<div data-image-index={{index}}>{{detailed-image image=image}}</div>{{/swiper-slide}}
+	        	{{#swiper-slide}}
+	        		<div class="detailed-image-wrapper" data-image-index={{index}}>
+	        		{{detailed-image image=image}}
+	        		</div>
+	        	{{/swiper-slide}}
 	        	
 	        {{/each}}
 	      {{/swiper-container}}
@@ -30,11 +34,25 @@
   {{#paper-button 
   	onClick=(action "gotoImage" "previous")
   	disabled=(eq image.previous null)
-  }}Prev{{/paper-button}}
-  <span class="flex"></span>
+  	iconButton=true
+  }}
+  {{paper-icon "keyboard_arrow_left"}}
+  {{/paper-button}}
+  <span class="flex"></span>	
+	{{#paper-button iconButton=true}}{{paper-icon "exposure_plus_1"}}{{/paper-button}}
+	<span class="flex"></span>
+	{{#paper-button iconButton=true}}{{paper-icon "comment"}}{{/paper-button}}
+	<span class="flex"></span>
+	{{#paper-button iconButton=true}}{{paper-icon "add"}}{{/paper-button}}
+	<span class="flex"></span>
+	{{#paper-button iconButton=true}}{{paper-icon "share"}}{{/paper-button}}
+	<span class="flex"></span>
   {{#paper-button 
   	onClick=(action "gotoImage" "next")
   	disabled=(eq image.next null)
-  }}Next{{/paper-button}}
+  	iconButton=true
+  }}
+  {{paper-icon "keyboard_arrow_right"}}
+  {{/paper-button}}
 {{/paper-dialog-actions}}
 {{/paper-dialog}}

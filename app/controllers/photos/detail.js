@@ -28,8 +28,8 @@ export default Controller.extend({
     },
 
     onSwipeChange(element) {
-      const firstChild = element.firstChild;
-      let { imageIndex } = firstChild.dataset;
+      const imageNode = element.querySelector('.detailed-image-wrapper');
+      let { imageIndex } = imageNode.dataset;
 
       imageIndex = parseInt(imageIndex);
 
