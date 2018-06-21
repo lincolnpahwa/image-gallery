@@ -5,9 +5,9 @@
     rowHeight="4:3 xs-1:1 1:1"
     gutter="12px gt-sm-8px" as |grid|}}
 
-    {{#each model.images as |image|}}
+    {{#each model.images as |image index|}}
 		{{#grid.tile rowspan="1" class="blue" as |tile|}}
-	      {{grid-image image=image imageDetail="imageDetailHandler"}}
+	      {{grid-image image=image index=index imageDetail="imageDetailHandler"}}
 	      {{#tile.footer}}
 	        <h3>{{image.value}}</h3>
 	      {{/tile.footer}}

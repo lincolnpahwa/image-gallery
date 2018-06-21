@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import { next } from '@ember/runloop';
 
 const KEYCODE_MAP = {
   RIGHT: 39,
@@ -11,7 +12,8 @@ export default Route.extend({
   imageService: service(),
 
   model({ image_name }) {
-    return this.imageService.findImageNodeByValue(image_name);
+    const node = this.imageService.findImageNodeByValue(image_name);
+    return node;
   },
 
   serialize(model) {
@@ -21,7 +23,16 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
-    controller.set('image', model)
+    controller.set('processing', true);
+    controller.set('image', model);
+    controller.set('index', model.index);
+    controller.set('swiperOptions', {
+      initialSlide: model.index
+    })
+
+    next(this, function() {
+      controller.set('processing', false);
+    });
   },
 
   onKeyUpHandler(event) {
@@ -45,7 +56,7 @@ export default Route.extend({
 
       this.keyUpHandlerInstance = this.onKeyUpHandler.bind(this);
 
-      document.addEventListener('keyup', this.keyUpHandlerInstance, true);
+      //document.addEventListener('keyup', this.keyUpHandlerInstance, true);
     },
 
     willTransition() {

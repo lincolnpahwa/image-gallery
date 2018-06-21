@@ -6,7 +6,7 @@ export default Component.extend(ImageBase, {
 
 	actions: {
 		imageDetail() {
-			this.sendAction('imageDetail', this.get('image'));
+			this.sendAction('imageDetail', this.get('image'), this.get('index'));
 		}
 	}
 });

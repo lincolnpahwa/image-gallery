@@ -17,7 +17,7 @@ export default class DoubleLinkedList {
   }
 
   add(data) {
-    let node = new Node(data);
+    let node = new Node(data, this.numberOfValues);
     if (!this.head) {
       this.head = node;
       this.tail = node;
@@ -52,5 +52,16 @@ export default class DoubleLinkedList {
       current = current.next;
     }
     return null;
+  }
+
+
+  getByIndex(index) {
+    let current = this.head;
+    let counter = 0;
+    while (counter < index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
   }
 }
