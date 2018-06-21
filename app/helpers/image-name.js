@@ -3,11 +3,11 @@ import { capitalize } from '@ember/string';
 
 export function imageName(params /*, hash*/ ) {
   const [name] = params;
-  
+
   if (name) {
-  	return name.split(' ').map(capitalize).join(' ').split('-').map(capitalize).join(' ');
+    return name.split(' ').map(capitalize).join(' ').split('-').map(capitalize).join(' ');
   } else {
-  	return params;
+    return params;
   }
 }
 
